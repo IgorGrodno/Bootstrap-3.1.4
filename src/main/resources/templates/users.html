@@ -124,6 +124,7 @@
                                                                     <input type="text"
                                                                            id="firstName-edit"
                                                                            class="form-control"
+                                                                           pattern="^[A-Za-zА-Яа-яЁё\s]+$"
                                                                            th:name="firstName"
                                                                            th:value="${user.firstName}">
                                                                 </div>
@@ -134,6 +135,7 @@
                                                                     <input type="text"
                                                                            id="lastName-edit"
                                                                            class="form-control"
+                                                                           pattern="^[A-Za-zА-Яа-яЁё\s]+$"
                                                                            th:name="lastName"
                                                                            th:value="${user.lastName}">
                                                                 </div>
@@ -312,13 +314,13 @@
                                               th:object="${user}" method="post">
                                             <div class="mb-3">
                                                 <label for="firstName" class="form-label">FirstName</label>
-                                                <input name="firstName" type="text"
+                                                <input name="firstName" type="text" pattern="^[A-Za-zА-Яа-яЁё\s]+$"
                                                        class="form-control" id="firstName"
                                                 >
                                             </div>
                                             <div class="mb-3">
                                                 <label for="lastName" class="form-label">LastName</label>
-                                                <input name="lastName" type="text"
+                                                <input name="lastName" type="text" pattern="^[A-Za-zА-Яа-яЁё\s]+$"
                                                        class="form-control" id="lastName"
                                                 >
                                             </div>

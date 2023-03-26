@@ -11,7 +11,8 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "users")
+
+@Table(name = "users", uniqueConstraints = {@UniqueConstraint(name = "eMail", columnNames = {"email"})})
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,16 +55,16 @@ public class User implements UserDetails {
         return eMail;
     }
 
-    public User(String eMail, String password, String firstName,String lastName,int age) {
+    public User(String eMail, String password, String firstName, String lastName, int age) {
         this.eMail = eMail;
         this.password = password;
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.age=age;
-        this.isAccountNonLocked=true;
-        this.isAccountNonExpired=true;
-        this.isEnabled=true;
-        this.isCredentialsNonExpired=true;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.isAccountNonLocked = true;
+        this.isAccountNonExpired = true;
+        this.isEnabled = true;
+        this.isCredentialsNonExpired = true;
     }
 
 

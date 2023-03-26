@@ -52,10 +52,13 @@ public class UserService implements UserDetailsService {
     }
     @Transactional
     public void addUser(User user) {
-        User newUser = new User(user.getEMail(), user.getPassword(),user.getFirstName(),user.getLastName(), user.getAge());
-        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
-        newUser.setRoles(user.getRoles());
-        userRepository.save(newUser);
+        User existingUser = userRepository.getByeMail(user.getEMail());
+        if(existingUser==null) {
+            User newUser = new User(user.getEMail(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getAge());
+            newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+            newUser.setRoles(user.getRoles());
+            userRepository.save(newUser);
+        }
     }
     @Transactional
     public void editUser(User user) {
